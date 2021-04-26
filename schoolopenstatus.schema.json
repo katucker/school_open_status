@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json#",
+  "title": "School Open Status",
+  "description": "A list of status records for schools, indicating whether each school was fully open for in-person learning.",
+  "type": "object",
+  "required": [
+    "conformsTo",
+    "describedBy",
+    "openStatus",
+    "statusWeekStartDate"
+  ],
+  "properties": {
+    "conformsTo": {
+      "title": "Schema version",
+      "description": "Version of the schema applicable for the dataset.",
+      "enum": [
+        "https://data.ed.gov/v1.0/schema/schoolopenstatus"
+      ]
+    },
+    "describedBy": {
+        "Title": "Schema",
+        "Description": "The URL for the JSON schema defining the structure of the JSON data file.",
+        "type": "string",
+        "format": "uri"
+    },
+    "openStatus": {
+      "type": "array",
+      "items": {
+          "type": "object",
+          "properties": {
+            "schoolId": {
+              "title": "School identifier",
+              "description": "The unique identifier assigned to a school in the U.S. Department of Education's Common Core of Data.",
+              "type": "string",
+              "minLength": 11,
+              "maxLength": 12
+            },
+            "schoolName": {
+              "title": "School name",
+              "description": "The school's name",
+              "type": "string"
+            },
+            "fullyOpen": {
+              "title": "Fully Open",
+              "description": "Assertion the school was fully open for in-person attendance during the week of reporting for all days the school was in session. If school was not in session for the reporting week, this should be set to true.",
+              "type": "boolean"
+            },
+            "leaId": {
+              "title": "Local Educational Agency Identifier",
+              "description": "The unique identifier for the Local Educational Agency corresponding to the school, as assigned in the U.S. Department of Education's Common Core of Data.",
+              "type": "string",
+              "minLength": 7,
+              "maxLength": 7
+            },
+            "stateCode": {
+              "title": "State code",
+              "description": "The two character code for the State in which the school is located.",
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2
+            }
+          },
+          "required": ["schoolId","fullyOpen"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "statusWeekStartDate": {
+      "title" : "Status week start date",
+      "description": "The date of the first day of the week for which this list of open status records is valid.",
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json#",
+  "title": "School Open Status",
+  "description": "A count of status records for schools, indicating the number in a Local Educational Agency's jurisdicion that are open for in-person learning, categorized by grade level range and ranges of number of days in a week.",
+  "$defs": {
+    "count": {
+      "type": "integer",
+      "inclusiveMinimum": 0
+    },
+    "countDaysRange": {
+        "type": "object",
+        "properties": {
+            "fourOrMoreDays": {
+                "title": "Four or more days",
+                "description": "Count of schools that were open for in-person attendance for four or more days of the report week.",
+                "$ref": "#/defs/count"
+            },
+            "oneToThreeDays": {
+                "title": "One to three days",
+                "description": "Count of schools that were open for in-person attendance for one to three days of the report week.",
+                "$ref": "#/defs/count"
+            },
+            "noDays": {
+                "title": "No days",
+                "description": "Count of schools that were in session but no open for in-person attendance during the report week.",
+                "$ref": "#/defs/count"
+            },
+            "notInSession": {
+                "title": "Not in session",
+                "description": "Count of schools that were not in session for the report week.",
+                "$ref": "#/defs/count"
+            }
+        }
+    }
+  },
+  "type": "object",
+  "required": [
+    "conformsTo",
+    "describedBy",
+    "operation",
+    "statusDate"
+  ],
+  "properties": {
+    "conformsTo": {
+      "title": "Schema version",
+      "description": "Version of the schema applicable for the dataset.",
+      "enum": [
+        "https://data.ed.gov/v1.0/schema/schoolopenstatus"
+      ]
+    },
+    "describedBy": {
+        "Title": "Schema",
+        "Description": "The URL for the JSON schema defining the structure of the JSON data file.",
+        "type": "string",
+        "format": "uri"
+    }
+    "localEducationalAgency": {
+      "type": "array",
+      "items": {
+        "openStatus": {
+          "type": "object",
+          "properties": {
+            "leaId": {
+              "title": "Local Educational Agency identifier",
+              "description": "The unique identifier assigned to a Local Educational Agency in the U.S. Department of Education's Common Core of Data.",
+              "type": "string",
+              "minLength": 7,
+              "maxLength": 7
+            },
+            "leaName": {
+              "title": "Local Educational Agency name",
+              "description": "The Local Educational Agency's name",
+              "type": "string"
+            },
+            "elementaryGradeRange": {
+               "title": "Elementary School Grade Range",
+               "description": "The count of open schools in each day range that are in the elementary school range of grades."
+               "$ref": "#/defs/countDaysRange"
+            },
+            "middleGradeRange": {
+               "title": "Middle School Grade Range",
+               "description": "The count of open schools in each day range that are in the middle school range of grades."
+               "$ref": "#/defs/countDaysRange"
+            },
+            "highGradeRange": {
+               "title": "High School Grade Range",
+               "description": "The count of open schools in each day range that are in the high school range of grades."
+               "$ref": "#/defs/countDaysRange"
+            },
+            "otherGradeRange": {
+               "title": "Other School Grade Range",
+               "description": "The count of open schools in each day range that are in any other range of grades."
+               "$ref": "#/defs/countDaysRange"
+            },
+          },
+          "required": ["leaID","elementaryGradeRange","middleGradeRange","highGradeRange","otherGradeRange"]
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "statusWeekStartDate": {
+      "title" : "Status week start date",
+      "description": "The date of the first day of the week for which this collection of open policy records is valid.",
+      "type": "string",
+      "format": "date"
+    }
+  }
+}
