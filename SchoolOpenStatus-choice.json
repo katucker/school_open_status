@@ -1,0 +1,23 @@
+{
+  "conformsTo": "https://data.ed.gov/v1.0/schema/schoolopenstatus",
+  "describedBy": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json",
+  "statusWeekStartDate": "2021-04-15",
+  "lea" {
+    "stateCode": "AL",
+    "leaId": "1000050",
+    "comment": "For each school, use 'all' if the school was open for in-person attendance every day the school was in session, use 'some' if the school was open some days for in-person attendance, 'none' if the school was not open for in-person attendance at all, and 'N/A' if the school was not in session."
+    "openStatus": [
+      { "openDays": "all",  "schoolId": "10000500870", "schoolName": "Albertville Middle School" },
+      { "openDays": "all", "schoolId": "10000500871"  },
+      { "openDays": "some", "schoolId": "10000500879"  },
+      { "openDays": "some", "schoolId": "10000500889"  },
+      { "openDays": "none",  "schoolId": "10000501616"  },
+      { "openDays": "none",  "schoolId": "10000502150", "schoolName": "Albertville Primary School" },
+    ]
+  },
+  "lea" {
+    "openStatus": [
+      { "openDays": "N/A",  "schoolId": "10000600872", "schoolName": "Asbury High School" }
+    ]
+  }
+}
