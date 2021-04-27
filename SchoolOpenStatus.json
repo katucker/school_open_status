@@ -2,7 +2,7 @@
   "conformsTo": "https://data.ed.gov/v1.0/schema/schoolopenstatus",
   "describedBy": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json",
   "statusWeekStartDate": "2021-04-15",
-  "lea" {
+  "lea": {
     "stateCode": "AL",
     "leaId": "1000050",
     "inPersonStatus": [
@@ -32,7 +32,7 @@
       }
     ]
   },
-  "lea" {
+  "lea": {
     "inPersonStatus": [
       { "schoolId": "10000600872", "schoolName": "Asbury High School",
         "fullyInPerson": false,
