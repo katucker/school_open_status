@@ -2,13 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json#",
   "title": "School Open Status",
-  "description": "A list of status records for schools, indicating whether each school was fully open for in-person learning.",
+  "description": "A list of status records for schools, indicating how many days each school was open for in-person learning.",
   "type": "object",
   "required": [
     "conformsTo",
     "describedBy",
     "openStatus",
-    "statusWeekStartDate"
+    "reportingPeriodEndDate",
+    "ombControlNumber",
+    "burdenStatement"
   ],
   "properties": {
     "conformsTo": {
@@ -24,51 +26,98 @@
         "type": "string",
         "format": "uri"
     },
-    "openStatus": {
+    "ombControlNumber": {
+      "title": "OMB Control Numbner",
+      "description": "The unique identifier assinged to the approved information collection.",
+      "enum": [
+        "1810-XXXX"
+      ]
+    },
+    "burdenStatement": {
+      "title": "Burden Statement",
+      "description": "The statement of estimated burden for all respondents of the approved information collection.",
+      "enum": [
+        "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202."
+      ]
+    }
+    "lea": {
       "type": "array",
       "items": {
-          "type": "object",
-          "properties": {
-            "schoolId": {
-              "title": "School identifier",
-              "description": "The unique identifier assigned to a school in the U.S. Department of Education's Common Core of Data.",
-              "type": "string",
-              "minLength": 11,
-              "maxLength": 12
-            },
-            "schoolName": {
-              "title": "School name",
-              "description": "The school's name",
-              "type": "string"
-            },
-            "fullyOpen": {
-              "title": "Fully Open",
-              "description": "Assertion the school was fully open for in-person attendance during the week of reporting for all days the school was in session. If school was not in session for the reporting week, this should be set to true.",
-              "type": "boolean"
-            },
-            "leaId": {
-              "title": "Local Educational Agency Identifier",
-              "description": "The unique identifier for the Local Educational Agency corresponding to the school, as assigned in the U.S. Department of Education's Common Core of Data.",
-              "type": "string",
-              "minLength": 7,
-              "maxLength": 7
-            },
-            "stateCode": {
-              "title": "State code",
-              "description": "The two character code for the State in which the school is located.",
-              "type": "string",
-              "minLength": 2,
-              "maxLength": 2
-            }
+        "type": "object",
+        "properties": {
+          "stateCode": {
+            "title": "State code",
+            "description": "The 2 character code assigned to the State in which the Local Educational Agency is located.",
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
           },
-          "required": ["schoolId","fullyOpen"]
+          "leaID": {
+            "title": "Local Educational Agency identifier",
+            "description": "The unique identifier assigned to the Local Educational Agency in the U.S. Department of Education Common Core of Data.",
+            "type": "string",
+            "minLength": 7,
+            "maxLength": 7
+          },
+          "reportingPeriodEndDate": {
+            "title" : "Reporting period",
+            "description": "The date of the last day of the week for which this list of LEA open status records is valid, in ISO8601 format. Only use if the reporting period for this LEA differs from the overall list.",
+            "type": "string",
+            "format": "date"
+          },
+          "comment": {
+            "title": "Comment",
+            "description": "Element for embedding comments in the compliant data files.",
+            "type": "string"
+          },
+          "openStatus": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "schoolID": {
+                  "title": "School identifier",
+                  "description": "The unique identifier assigned to a school in the U.S. Department of Education Common Core of Data.",
+                  "type": "string",
+                  "minLength": 11,
+                  "maxLength": 12
+                },
+                "schoolName": {
+                  "title": "School name",
+                  "description": "The school name",
+                  "type": "string"
+                },
+                "daysOpen": {
+                  "title": "School open status",
+                  "description": "A categorization of how many days the school was open for in-person attendance during the week of reporting.",
+                  "enum": [
+                    "5+",
+                    "1-4",
+                    "0",
+                    "Not in session"
+                  ]
+                },
+                "reportingPeriodEndDate": {
+                  "title" : "Reporting period",
+                  "description": "The date of the last day of the week for which this school open status records is valid, in ISO8601 format. Only use if this school has a different reporting period than the other schools in the list.",
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "required": ["schoolID","daysOpen"]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": ["openStatus"]  
       },
       "minItems": 1,
       "uniqueItems": true
     },
-    "statusWeekStartDate": {
-      "title" : "Status week start date",
-      "description": "The date of the first day of the week for which this list of open status records is valid.",
+    "reportingPeriodEndDate": {
+      "title" : "Reporting period",
+      "description": "The date of the last day of the week for which this list of open status records is valid, in ISO8601 format.",
       "type": "string",
       "format": "date"
     }
