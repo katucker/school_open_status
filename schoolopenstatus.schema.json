@@ -3,13 +3,13 @@
   "$id": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json#",
   "title": "School Open Status",
   "description": "A list of status records for schools, indicating how many days each school was open for in-person learning.",
-  "$comment": "OMB control number 1810-XXXX".
-  "$comment": "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202."
+  "$comment": "OMB control number 1810-XXXX",
+  "$comment": "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202.",
   "type": "object",
   "required": [
     "conformsTo",
     "describedBy",
-    "openStatus",
+    "lea",
     "reportingPeriodEndDate",
     "ombControlNumber",
     "burdenStatement"
@@ -41,7 +41,7 @@
       "enum": [
         "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202."
       ]
-    }
+    },
     "lea": {
       "type": "array",
       "items": {
