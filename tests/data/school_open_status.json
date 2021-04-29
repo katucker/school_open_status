@@ -1,0 +1,27 @@
+{
+  "conformsTo": "https://data.ed.gov/v1.0/schema/schoolopenstatus",
+  "describedBy": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json",
+  "ombControlNumber": "1810-XXXX",
+  "burdenStatement": "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202.",
+  "reportingPeriodEndDate": "2021-04-17",
+  "lea": [
+    {
+      "stateCode": "AL",
+      "leaID": "1000050",
+      "comment": "For each school, indicate the number of days the school was open for in-person attendance. Valid choices are '5+', '1-4', '0', and 'not in session'.",
+      "openStatus": [
+        { "daysOpen": "5+",  "schoolID": "10000500870", "schoolName": "Albertville Middle School" },
+        { "daysOpen": "5+", "schoolID": "10000500871"  },
+        { "daysOpen": "1-4", "schoolID": "10000500879"  },
+        { "daysOpen": "1-4", "schoolID": "10000500889"  },
+        { "daysOpen": "0",  "schoolID": "10000501616"  },
+        { "daysOpen": "0",  "schoolID": "10000502150", "schoolName": "Albertville Primary School" },
+      ]
+    },
+    {
+      "openStatus": [
+        { "daysOpen": "Not in session",  "schoolID": "10000600872", "schoolName": "Asbury High School" }
+      ]
+    }
+  ]
+}
