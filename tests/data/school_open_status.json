@@ -1,22 +1,22 @@
 {
   "conformsTo": "https://data.ed.gov/v1.0/schema/schoolopenstatus",
   "describedBy": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json",
-  "reportingPeriodEndDate": "2021-05-15",
+  "reportingPeriodStartDate": "2021-05-10",
   "lea": [
     {
-      "comment": "For each school, indicate the number of weekdays in-person learning was available. Valid choices are 0 through 7, and 'Not in session'.",
+      "comment": "For each school, indicate whether in-person instruction was available for all, none, or a subset of the week. Valid choices are All, None, Hybrid, and Not in session.",
       "leaID": "1000050", "leaName": "", "openStatus": [
-        { "weekdaysInPersonLearning": 5,  "schoolID": "10000500870", "schoolName": "Albertville Middle School" },
-        { "weekdaysInPersonLearning": 5, "schoolID": "10000500871"  },
-        { "weekdaysInPersonLearning": 3, "schoolID": "10000500879"  },
-        { "weekdaysInPersonLearning": 2, "schoolID": "10000500889"  },
-        { "weekdaysInPersonLearning": 0,  "schoolID": "10000501616"  },
-        { "weekdaysInPersonLearning": 0,  "schoolID": "10000502150", "schoolName": "Albertville Primary School" },
+        { "weeklyInPersonInstruction": "All",  "schoolID": "10000500870", "schoolName": "Albertville Middle School" },
+        { "weeklyInPersonInstruction": "All", "schoolID": "10000500871"  },
+        { "weeklyInPersonInstruction": "Hybrid", "schoolID": "10000500879"  },
+        { "weeklyInPersonInstruction": "Hybrid", "schoolID": "10000500889"  },
+        { "weeklyInPersonInstruction": "None",  "schoolID": "10000501616"  },
+        { "weeklyInPersonInstruction": "None",  "schoolID": "10000502150", "schoolName": "Albertville Primary School" },
       ]
     },
     {
       "openStatus": [
-        { "weekdaysInPersonLearning": "Not in session",  "schoolID": "10000600872", "schoolName": "Asbury High School" }
+        { "weeklyInPersonInstruction": "Not in session",  "schoolID": "10000600872", "schoolName": "Asbury High School" }
       ]
     }
   ]
