@@ -10,9 +10,7 @@
     "conformsTo",
     "describedBy",
     "lea",
-    "reportingPeriodEndDate",
-    "ombControlNumber",
-    "burdenStatement"
+    "reportingPeriodEndDate"
   ],
   "properties": {
     "conformsTo": {
@@ -58,8 +56,13 @@
             "title": "Local Educational Agency identifier",
             "description": "The unique identifier assigned to the Local Educational Agency in the U.S. Department of Education Common Core of Data.",
             "type": "string",
-            "minLength": 7,
+            "minLength": 6,
             "maxLength": 7
+          },
+          "leaName": {
+            "title": "Local Educational Agency name",
+            "description": "The Local Educational Agency name.",
+            "type": "string"
           },
           "reportingPeriodEndDate": {
             "title" : "Reporting period",
@@ -89,24 +92,22 @@
                   "description": "The school name",
                   "type": "string"
                 },
-                "daysOpen": {
+                "weekdaysInPersonLearning": {
                   "title": "School open status",
                   "description": "A categorization of how many days the school was open for in-person attendance during the week of reporting.",
-                  "enum": [
-                    "5+",
-                    "1-4",
-                    "0",
-                    "Not in session"
+                  "anyOf": [
+                    {"type": "integer" },
+                    {"const:": "Not in session"}
                   ]
                 },
                 "reportingPeriodEndDate": {
                   "title" : "Reporting period",
-                  "description": "The date of the last day of the week for which this school open status records is valid, in ISO8601 format. Only use if this school has a different reporting period than the other schools in the list.",
+                  "description": "The date of the last day of the week for which this school open status record is valid, in ISO8601 format. Only use if this school has a different reporting period than the other schools in the list.",
                   "type": "string",
                   "format": "date"
                 }
               },
-              "required": ["schoolID","daysOpen"]
+              "required": ["schoolID","weekdaysInPersonLearning"]
             },
             "minItems": 1,
             "uniqueItems": true
