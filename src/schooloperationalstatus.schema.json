@@ -1,0 +1,126 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json#",
+  "title": "School Open Status",
+  "description": "A list of status records for schools, indicating whether a school was open for in-person instruction for all of a week, some of a week, none of the week, or wasn't in sesion.",
+  "$comment": "OMB control number 1810-XXXX",
+  "$comment": "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202.",
+  "type": "object",
+  "required": [
+    "conformsTo",
+    "describedBy",
+    "lea",
+    "reportingPeriodStartDate"
+  ],
+  "properties": {
+    "conformsTo": {
+      "title": "Schema version",
+      "description": "Version of the schema applicable for the dataset.",
+      "enum": [
+        "https://data.ed.gov/v1.0/schema/schooloperationalstatus"
+      ]
+    },
+    "describedBy": {
+        "Title": "Schema",
+        "Description": "The URL for the JSON schema defining the structure of the JSON data file.",
+        "type": "string",
+        "format": "uri"
+    },
+    "ombControlNumber": {
+      "title": "OMB Control Numbner",
+      "description": "The unique identifier assinged to the approved information collection.",
+      "enum": [
+        "1810-XXXX"
+      ]
+    },
+    "burdenStatement": {
+      "title": "Burden Statement",
+      "description": "The statement of estimated burden for all respondents of the approved information collection.",
+      "enum": [
+        "According to the Paperwork Reduction Act of 1995, no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. The valid OMB control number for this information collection is 1810-XXXX. Public reporting burden for this collection of information is estimated to average XX hours per response, including time for reviewing instructions, searching existing data sources, gathering and maintaining the data needed, and completing and reviewing the collection of information. Under the PRA, participants are required to respond to this collection to obtain or retain a benefit. If you have any comments concerning the accuracy of the time estimate, suggestions for improving this individual collection, or if you have comments or concerns regarding the status of your individual form, please contact Joanne Bogart, US. Department of Education, 400 Maryland Avenue, SW, Washington, DC 20202."
+      ]
+    },
+    "reportingPeriodStartDate": {
+      "title" : "Reporting period start date",
+      "description": "The date of the first day of the week for which this list of open status records is valid, in ISO8601 format.",
+      "type": "string",
+      "format": "date"
+    },
+    "lea": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateCode": {
+            "title": "State code",
+            "description": "The 2 character code assigned to the State in which the Local Educational Agency is located.",
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "leaID": {
+            "title": "Local Educational Agency identifier",
+            "description": "The unique identifier assigned to the Local Educational Agency in the U.S. Department of Education Common Core of Data.",
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 7
+          },
+          "leaName": {
+            "title": "Local Educational Agency name",
+            "description": "The Local Educational Agency name.",
+            "type": "string"
+          },
+          "reportingPeriodStartDate": {
+            "title" : "LEA reporting period start date",
+            "description": "The date of the first day of the week for which this list of LEA open status records is valid, in ISO8601 format. Only use if the reporting period for this LEA differs from the overall list.",
+            "type": "string",
+            "format": "date"
+          },
+          "comment": {
+            "title": "Comment",
+            "description": "Element for embedding comments in the compliant data files.",
+            "type": "string"
+          },
+          "openStatus": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "schoolID": {
+                  "title": "School identifier",
+                  "description": "The unique identifier assigned to a school in the U.S. Department of Education Common Core of Data.",
+                  "type": "string",
+                  "minLength": 11,
+                  "maxLength": 12
+                },
+                "schoolName": {
+                  "title": "School name",
+                  "description": "The school name",
+                  "type": "string"
+                },
+                "weeklyInPersonInstruction": {
+                  "title": "Weekly in-person instruction status",
+                  "description": "Whether the school offered in-person instruction for all of the days of the week, none of them, or a hybrid mixture, or the school was not in  session.",
+                  "type": "string",
+                  "enum": ["All", "all", "ALL", "None", "none", "NONE", "Hybrid", "hybrid", "HYBRID", "Not in session", "not in session", "Not in Session", "Not In Session", "Not reported", "Not Reported"]
+                },
+                "reportingPeriodStartDate": {
+                  "title" : "School reporting period start date",
+                  "description": "The date of the first day of the week for which this school open status record is valid, in ISO8601 format. Only use if this school has a different reporting period than the other schools in the list.",
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "required": ["schoolID","weeklyInPersonInstruction"]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": ["openStatus"]  
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

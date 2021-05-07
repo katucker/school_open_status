@@ -1,0 +1,26 @@
+{
+  "conformsTo": "https://data.ed.gov/v1.0/schema/schoolopenstatus",
+  "describedBy": "https://data.ed.gov/v1.0/schema/schoolopenstatus.schema.json",
+  "reportingPeriodStartDate": "2021-05-10",
+  "comment": "For each school, record All if all enrolled students were offered in-person instruction the full week",
+  "comment": "record None if no enrolled student was offered in-person instruction any day of the reporting week,",
+  "comment": "record Hybrid if the school was in session but the other two responses are not accurate,",
+  "comment": "and record Not in session if the school was not in session for the reporting week.",
+  "lea": [
+    {
+      "leaID": "1000050", "leaName": "", "openStatus": [
+        { "weeklyInPersonInstruction": "All",  "schoolID": "10000500870", "schoolName": "Albertville Middle School" },
+        { "weeklyInPersonInstruction": "All", "schoolID": "10000500871"  },
+        { "weeklyInPersonInstruction": "Hybrid", "schoolID": "10000500879"  },
+        { "weeklyInPersonInstruction": "Hybrid", "schoolID": "10000500889"  },
+        { "weeklyInPersonInstruction": "None",  "schoolID": "10000501616"  },
+        { "weeklyInPersonInstruction": "None",  "schoolID": "10000502150", "schoolName": "Albertville Primary School" },
+      ]
+    },
+    {
+      "openStatus": [
+        { "weeklyInPersonInstruction": "Not in session",  "schoolID": "10000600872", "schoolName": "Asbury High School" }
+      ]
+    }
+  ]
+}
