@@ -8,6 +8,7 @@
  Usage::
      
      python school_open_status_generator.py ccdfile.csv [--outputdir=dirpath] [--conformance=URL] [--schema=URL]
+     
 """
 
 from __future__ import print_function
